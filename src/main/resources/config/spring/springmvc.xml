@@ -6,12 +6,29 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!--自动扫描控制器-->
-    <context:component-scan base-package="com.you.ssm.controller"/>
-    <context:component-scan base-package="com.you.ssm.service"/>
+    <context:component-scan base-package="com.you.ssm.*"/>
+    <!--<context:component-scan base-package="com.you.ssm.service"/>-->
+
+    <!-- 注册拦截器 -->
+    <!--<mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+
+            <bean class="com.you.ssm.interceptors.MyInterceptor ">
+                &lt;!&ndash; 拦截器的类里需要有这个字段 private List<String> uncheckUrls 将不需要拦截的请求放在这里&ndash;&gt;
+                <property name="uncheckUrls">
+                    <list>
+
+                    </list>
+                </property>
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>-->
+
     <!--视图渲染-->
     <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>
-        <property name="suffix" value=".do"/>
+        <property name="suffix" value=".jsp"/>
     </bean>
     <!--控制器映射器和控制器适配器-->
     <mvc:annotation-driven></mvc:annotation-driven>
